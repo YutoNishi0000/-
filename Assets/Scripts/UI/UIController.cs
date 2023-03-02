@@ -38,6 +38,7 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //所持している味方の数を表示
         NumFriends.text = "x" + PlayerState.playerState.NumFriends;
         Type();
 
@@ -78,7 +79,7 @@ public class UIController : MonoBehaviour
         }
     }
 
-    //ゲームオーバー時に行う処理
+    //ゲームオーバー、ゲームクリア時それぞれのステートに応じてゲーム終了処理を行う
     void GameFinish(Text gameState, string BGMName)
     {
         if (!_seOneShot)

@@ -30,17 +30,9 @@ public class ModeSelection : MonoBehaviour
         _sePlay.Play("Button");
     }
 
-    //探索ステージに移行
-    public void Adventure()
-    {
-        //SceneManager.LoadScene("Environment_Free");
-        //PlayerState.playerState.modeSelection = PlayerState.ModeSelection.Adventure;
-        //_sePlay.Play("Button");
-    }
-
+    //タイトルに戻る
     public void BackToTitle()
     {
-        Debug.Log("タイトルに戻ります");
         SceneManager.LoadScene("Title");
         PlayerState.playerState.modeSelection = PlayerState.ModeSelection.Title;
         _sePlay.Play("Button");

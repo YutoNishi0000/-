@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class FollowPlayer : Actor
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
+        //ƒvƒŒƒCƒ„[‚ğí‚É’Ç”ö‚³‚¹‚é
         transform.position = new Vector3(Instance.transform.position.x, transform.position.y, Instance.transform.position.z);
     }
 }

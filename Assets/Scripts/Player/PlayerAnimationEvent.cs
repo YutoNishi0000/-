@@ -7,17 +7,19 @@ public class PlayerAnimationEvent : MonoBehaviour
     public bool _attack = false;
     public bool _endAttack = false;
 
+    //攻撃アニメーションが再生される時に呼び出される
     void Attack()
     {
+        //攻撃開始
         _attack = true;
-        Debug.Log("プレイヤー攻撃開始");
         _endAttack = false;
     }
 
+    //攻撃アニメーションが終了するときに呼び出される
     void AttackEnd()
     {
+        //攻撃終了
         _attack = false;
-        Debug.Log("プレイヤー攻撃終わり");
         _endAttack = true;
     }
 }

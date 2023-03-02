@@ -92,8 +92,10 @@ public class MagicObj : Actor
 
             IEnemyDamagable _enemyCon = collision.gameObject.GetComponent<IEnemyDamagable>();
 
+            //ダメージ量を計算
             int _damageVal = CalcDamage(_attack, fireType, collision.gameObject.GetComponent<EnemyController>()._defenceState);
 
+            //先ほど取得したダメージ量をインターフェースの引数に渡し、ダメージ処理を行う
             _enemyCon.Damage(_damageVal);
         }
     }

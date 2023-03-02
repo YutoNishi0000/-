@@ -20,12 +20,16 @@ public class TimmeController : MonoBehaviour
     {
         _timeLeft -= Time.deltaTime;
 
+        //何分か
         int devide = Mathf.FloorToInt(_timeLeft / 60);
 
+        //何秒か
         int second = Mathf.FloorToInt(_timeLeft % 60);
 
+        //残り時間を表示
         time.text = "残り" + devide + "分" + second + "秒";
 
+        //時間が過ぎたらゲーム重量処理を行う
         if(_timeLeft < 0 && PlayerState.playerState._gameState != PlayerState.GemeState.GameOver)
         {
             PlayerState.playerState._gameState = PlayerState.GemeState.GameClear;

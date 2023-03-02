@@ -12,6 +12,7 @@ public class InsFriends : Actor
         InstantiateFriend();
     }
 
+    //Œ©•û‚ð¢Š«‚·‚éŠÖ”
     public void InstantiateFriend()
     {
         if (Input.GetKeyDown(KeyCode.E) && PlayerState.playerState.NumFriends > 0)

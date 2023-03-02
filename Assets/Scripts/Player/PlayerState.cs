@@ -6,6 +6,7 @@ using UnityEngine;
 //シングルトンの作成
 public class PlayerState : MonoBehaviour
 {
+    //シングルトン化
     public static PlayerState playerState;
 
     private void Awake()
@@ -30,8 +31,6 @@ public class PlayerState : MonoBehaviour
         None
     }
 
-    public State state;
-
     //攻撃時の魔法の属性
     public enum FireBall
     {
@@ -40,22 +39,7 @@ public class PlayerState : MonoBehaviour
         blue
     }
 
-    public FireBall fireBall;
-
-    public readonly int _offensivePower = 50000;//1000;        //攻撃力
-    public int _defencePower = 100;          //防御力
-    ////public uint _criticalRate = 50;          //会心率
-    ////public uint _weaknessMultiplier = 100;    //弱点倍率
-    
-    public int NumCrushingEnemies;
-
-    //持っているリンゴの個数
-    public int _NumApples = 0;
-
-    public float PlayerHP = 100000;
-    public readonly float PlayerMAXHP = 100000;
-    public int NumFriends = 0;
-
+    //シーンステート
     public enum ModeSelection
     {
         Title,
@@ -63,8 +47,7 @@ public class PlayerState : MonoBehaviour
         MoodyNight,
     }
 
-    public ModeSelection modeSelection;
-
+    //ゲームステート
     public enum GemeState
     {
         None,
@@ -72,14 +55,24 @@ public class PlayerState : MonoBehaviour
         GameClear
     }
 
-    public GemeState _gameState;
-
+    //何個魔法を生成するか
     public enum BurstState
     {
         Single, 
         Multi
     }
 
+    public readonly int _offensivePower = 50000;//1000;        //攻撃力
+    public readonly float PlayerMAXHP = 100000;
+    
+    public int NumCrushingEnemies;
+    public float PlayerHP = 100000;
+    public int NumFriends = 0;
+
+    public State state;
+    public FireBall fireBall;
+    public ModeSelection modeSelection;
+    public GemeState _gameState;
     public BurstState _burstState;
 
     private void Start()
