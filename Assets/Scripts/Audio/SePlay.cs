@@ -9,6 +9,11 @@ public class SePlay : MonoBehaviour
 
     AudioSource audioSource;
 
+    private void Start()
+    {
+        audioSource = FindObjectOfType<AudioSource>();
+    }
+
     //Œø‰Ê‰¹‚ğÄ¶‚·‚é
     public void Play(string seName)
     {

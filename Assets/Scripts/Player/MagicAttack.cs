@@ -41,15 +41,11 @@ public class MagicAttack : Actor
     {
         Move();
         SwitchFireType();
-
-        if (GetEnemy() != null)
-        {
-            target = GetEnemy();
-        }
+        GetEnemy();
     }
 
     //マウスカーソル上にエネミーがいた場合の処理を記述
-    Transform GetEnemy()
+    void GetEnemy()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Rayを生成
         RaycastHit hit;
@@ -78,10 +74,11 @@ public class MagicAttack : Actor
                         _coolTime = Instance.param._coolTime;
                     }
                 }
+
+                //標的をセット
+                target = hit.collider.gameObject.transform;
             }
         }
-
-        return hit.collider.gameObject.transform;
     }
 
     public override void Move()
