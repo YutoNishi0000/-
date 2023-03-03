@@ -62,24 +62,17 @@ public interface IExp
 public class MoveController : Actor
 {
     private Vector3 NormalVector;  //コリジョンに接触している地面の法線ベクトルを格納
-    //Animatorを入れる
     public Animator animator;
-    //Main Cameraを入れる
-    public Transform cam;
     public GameObject FirePos;   //魔法オブジェクトを生み出すための位置
-    [System.NonSerialized] public Detection dec;             //Detectionクラスの変数を取得
     private Vector3 MoveVector;                     //移動方向を格納するベクトル
-    private float _revivalTime;                      //復活までの時間を格納する
     public PlayerAnimationEvent animEve;
-    private GetEnemyAttack _getDamage;
     public PlayerParameter param;
     public Slider _bulkHPBar;
     public Slider _HPBar;
     private Rigidbody rb;
     private float totalFallTime = 0f;
-    private SePlay _sePlay;
-    private bool _damageSE = false;
-    private bool _isGround = false;
+    public SePlay _sePlay;
+    private bool _isGround = false; //落下フラグ
     public bool _isDropping;       //味方を召喚中かを表すフラグ
 
     // Start is called before the first frame update
@@ -87,9 +80,6 @@ public class MoveController : Actor
     {
         //Animatorコンポーネントを取得
         animator = GetComponent<Animator>();
-
-        //Detectionクラスインスタンスを取得
-        dec = GetComponentInChildren<Detection>();
 
         //プレイヤーの動作状態を初期化
         PlayerState.playerState.state = PlayerState.State.None;
@@ -99,9 +89,6 @@ public class MoveController : Actor
 
         //アニメーションイベント管理クラスのインスタンスを取得
         animEve = GetComponentInChildren<PlayerAnimationEvent>();
-
-        //ダメージをくらったかどうかを管理するクラスのインスタンスを取得
-        _getDamage = GetComponentInChildren<GetEnemyAttack>();
 
         rb = GetComponent<Rigidbody>();
 
@@ -125,13 +112,6 @@ public class MoveController : Actor
     {
         Death();
         Move();
-
-        Debug.Log("HP" + PlayerState.playerState.PlayerHP);
-    }
-
-    //地面との接触判定を物理演算のフレームワークで行っているため合わせたい
-    private void FixedUpdate()
-    {
     }
 
     public override void Move()
@@ -208,7 +188,7 @@ public class MoveController : Actor
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            // 衝突した面の、接触した点における法線を取得
+            // 衝突した面の、接触した点における法線ベクトルを取得
             NormalVector = collision.GetContact(0).normal;
             _isGround = true;
         }

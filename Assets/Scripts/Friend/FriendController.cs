@@ -37,10 +37,12 @@ public class FriendController : Actor, IDamageable
     {
         if (!_isDropped)
         {
+            //味方書簡状態になったらドロップされるまでマウスカーソルについていくようにする
             Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z + 10);
             transform.position = Camera.main.ScreenToWorldPoint(mousePos);
         }
 
+        //クリックしたら味方召喚状態をフラグを使って解除する
         if(Input.GetMouseButtonDown(0))
         {
             _isDropped = true;
@@ -102,7 +104,7 @@ public class FriendController : Actor, IDamageable
     {
         if(collision.gameObject.CompareTag("Player") && _isDead)
         {
-            //gameObject.SetActive(false);
+            //HPが無くなったらプレイヤーのところに飛んでいきプレイヤーに当たると消滅する
             Destroy(gameObject);
         }
     }
@@ -138,12 +140,14 @@ public class FriendController : Actor, IDamageable
     //攻撃アニメーションが始める時に呼び出す
     public void StartAttack()
     {
+        //当たり判定をオンに
         swordCol.enabled = true;
     }
 
     //攻撃アニメーションが終わるときに呼び出す
     public void EndAttack()
     {
+        //当たり判定をオフに
         swordCol.enabled = false;
     }
 }

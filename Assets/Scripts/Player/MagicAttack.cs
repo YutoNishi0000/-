@@ -39,19 +39,17 @@ public class MagicAttack : Actor
     // Update is called once per frame
     void Update()
     {
-        //if (isSpawning)
-        //{
-        //    return;
-        //}
-        //StartCoroutine(nameof(SpawnMissile));
-
         Move();
         SwitchFireType();
-        CheckEnemy();
+
+        if (GetEnemy() != null)
+        {
+            target = GetEnemy();
+        }
     }
 
     //マウスカーソル上にエネミーがいた場合の処理を記述
-    void CheckEnemy()
+    Transform GetEnemy()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); // Rayを生成
         RaycastHit hit;
@@ -71,18 +69,19 @@ public class MagicAttack : Actor
                     //ボタンを押したとき、クールタイムが終わってて味方召喚中でなければ
                     if (Input.GetMouseButtonDown(0) && _coolTime <= 0 && !Instance._isDropping)
                     {
+                        //プレイヤーの状態を攻撃状態に
                         PlayerState.playerState.state = PlayerState.State.Attack;
                         _attack = false;
+
+                        //クールタイム発生
                         _isCoolTime = true;
                         _coolTime = Instance.param._coolTime;
-                        //Instance.transform.rotation = Quaternion.RotateTowards(Instance.transform.rotation, _cameraRotation, 10f);
-                        //_cameraAngle = Quaternion.Euler(new Vector3(Instance.transform.rotation.x, Instance.cam.eulerAngles.y, Instance.transform.rotation.z));
-                        //_cameraRotation = Quaternion.Euler(Instance.cam.eulerAngles);
                     }
                 }
             }
-            target = hit.collider.gameObject.transform;
         }
+
+        return hit.collider.gameObject.transform;
     }
 
     public override void Move()
@@ -121,6 +120,7 @@ public class MagicAttack : Actor
             }
         }
 
+        //クールタイム処理
         if (_isCoolTime)
         {
             //クールタイムから経過時間を引くことで値が0以下になりクールタイムが終わる仕組み
@@ -164,15 +164,6 @@ public class MagicAttack : Actor
             homing = Instantiate(fireBalls[(int)PlayerState.playerState.fireBall], transform.position, Quaternion.identity).GetComponent<MagicObj>();
             homing.Target = target;
         }
-        //else if(PlayerState.playerState._burstState == PlayerState.BurstState.Multi)
-        //{
-        //    for(int i = 0; i < _multiFirePos.Length; i++)
-        //    {
-        //        //魔法の種類を指定して攻撃を行う
-        //        MagicObj homing;
-        //        homing = Instantiate(fireBalls[(int)PlayerState.playerState.fireBall], _multiFirePos[i].transform.position, Quaternion.identity).GetComponent<MagicObj>();
-        //        homing.Target = target;
-        //    }
-        //}
+
     }
 }

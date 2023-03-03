@@ -22,9 +22,7 @@ public class CreateEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("Corou1");
-
-        //_startText.enabled = false;
+        StartCoroutine(nameof(ShowText));
 
         for (int i = 0; i < enemyPoint.Length; i++)
         {
@@ -58,19 +56,23 @@ public class CreateEnemy : MonoBehaviour
 
         if(sec > _interval)
         {
+            //三体モンスターを生成
             for (int j = 0; j < 3; j++)
             {
                 Instantiate(enemy[Random.Range(0, enemy.Length)], enemyPoint[point[j]].transform.position, Quaternion.identity);
             }
 
             sec = 0;
+            //リストの中身をクリア
             point.Clear();
 
+            //エネミーのIDをリストに追加
             for (int i = 0; i < enemyPoint.Length; i++)
             {
                 randNum.Add(i);
             }
 
+            //ランダムにリスト内の中身をシャッフルする
             for (int i = 0; i < 3; i++)
             {
                 int index = Random.Range(0, randNum.Count);
@@ -83,15 +85,9 @@ public class CreateEnemy : MonoBehaviour
     }
 
     //コルーチン関数を定義
-    private IEnumerator Corou1() //コルーチン関数の名前
+    private IEnumerator ShowText() //コルーチン関数の名前
     {
-        //if (PlayerState.playerState.modeSelection != PlayerState.ModeSelection.Adventure)
-        {
-            //コルーチンの内容
-            Debug.Log("スタート");
-            yield return new WaitForSeconds(3.0f);
-            _startText.enabled = false;
-            Debug.Log("スタートから5秒後");
-        }
+        yield return new WaitForSeconds(3.0f);
+        _startText.enabled = false;
     }
 }

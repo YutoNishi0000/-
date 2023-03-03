@@ -21,40 +21,33 @@ public class EnemyController : Actor, IEnemyDamagable
         blue
     }
 
-    private bool _getHit = false;                //攻撃をくらったかどうか
-    public EnemyState _enemyState;
-    private NavMeshHit navMeshHit;
-    private GameObject _treeObj;
-    public NavMeshAgent navMeshAgent;
-    private Animator anim;
-    private EnemyAnimationEvent animEve;              //エネミーアニメーションイベントクラスインスタンスの取得
-    public EnemyParameter param;
-    public DefenceState _defenceState;
-    public Image HPType;
-    private int EnemyHP = 10000;
-    public Slider _bulkHPBar;
-    public Slider _HPBar;
     private int NIGHT_HP = 100000;
     private int NIGHT_DAMAGE = 20000;
     private int BRIGHT_HP = 50000;
     private int BRIGHT_DAMAGE = 5200;
+    private int EnemyHP = 10000;
     private bool _attack;
+    private bool _getHit = false;                //攻撃をくらったかどうか
+    private GameObject _treeObj;
+    private Animator anim;
+    public NavMeshAgent navMeshAgent;
+    public EnemyParameter param;
+    public DefenceState _defenceState;
+    public Image HPType;
+    public EnemyState _enemyState;
+    public Slider _bulkHPBar;
+    public Slider _HPBar;
     public bool _isfriend;         //プレイヤーが出す味方キャラが自身の範囲内に存在しているか
-    private MagicAttack _magic;
-    public static bool _isRayHit;
 
     // Start is called before the first frame update
     void Start()
     {
-        _magic = FindObjectOfType<MagicAttack>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         _treeObj = GameObject.Find("forestpack_tree_1_leaf_1");
-        //navMeshAgent.destination = playerOb.transform.position;
         SetDestination();
         navMeshAgent.avoidancePriority = Random.Range(0, 100);
         _enemyState = new EnemyState();
         anim = GetComponent<Animator>();
-        animEve = GetComponent<EnemyAnimationEvent>();
 
         _defenceState = new DefenceState();
         int Type = Random.Range(0, 3);
@@ -126,14 +119,7 @@ public class EnemyController : Actor, IEnemyDamagable
 
     void GetRayhHit()
     {
-        //if(_isRayHit)
-        //{
-        //    //GetComponent<Outline>().OutlineColor = Color.red;
-        //}
-        //else
-        //{
-            GetComponent<Outline>().OutlineColor = Color.clear;
-        //}
+        GetComponent<Outline>().OutlineColor = Color.clear;
     }
 
     public override void Attack()
@@ -223,7 +209,6 @@ public class EnemyController : Actor, IEnemyDamagable
     {
         if (other.gameObject.CompareTag("Friend"))
         {
-            Debug.Log("フレンドをころした");
             _enemyState = EnemyState.Walk;
             navMeshAgent.speed = param._moveSpeed;
             _isfriend = false;

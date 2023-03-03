@@ -52,14 +52,12 @@ public class AxisController : Actor
         transform.position = player.transform.position + axisPos;
     }
 
+    //カメラの動作処理
     public override void Move()
     {
-        //三人称の時のCameraの位置にマウススクロールの値を足して位置を調整
-        //thirdPosAdd = thirdPos + new Vector3(0, 0, scrollLog);
-
         //マウススクロールの値を入れる
         scroll = Input.GetAxis("Mouse ScrollWheel");
-        //scrollAdd += Input.GetAxis("Mouse ScrollWheel") * -10;
+
         //マウススクロールの値は動かさないと0になるのでここで保存する
         scrollLog += Input.GetAxis("Mouse ScrollWheel");
 

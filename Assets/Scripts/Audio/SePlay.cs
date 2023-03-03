@@ -9,19 +9,6 @@ public class SePlay : MonoBehaviour
 
     AudioSource audioSource;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //コンポーネント取得
-        audioSource = GetComponent<AudioSource>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     //効果音を再生する
     public void Play(string seName)
     {

@@ -27,7 +27,6 @@ public class EnemyAnimationEvent : Actor
         {
             col[i].enabled = true;
         }
-        Debug.Log("アタック開始");
     }
 
     //攻撃が終わった後に呼び出す関数
@@ -37,7 +36,6 @@ public class EnemyAnimationEvent : Actor
         {
             col[i].enabled = false;
         }
-        Debug.Log("アタック終わり");
     }
 
     //アニメーションが始まった直後に呼び出す関数
@@ -52,13 +50,11 @@ public class EnemyAnimationEvent : Actor
         _endAttck2 = true;
     }
 
+    //モンスターの死亡処理
     void Death()
     {
         _death = true;
-        Debug.Log("エネミーが死んだ！！");
-        Destroy(this.gameObject);
+        Destroy(gameObject);
         PlayerState.playerState.NumCrushingEnemies++;
-        MissionManager._end = false;
-        Debug.Log("敵撃破数" + PlayerState.playerState.NumCrushingEnemies);
     }
 }

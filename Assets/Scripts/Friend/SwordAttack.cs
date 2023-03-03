@@ -23,8 +23,6 @@ public class SwordAttack : Actor
         //エネミーが当たったら
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("剣による攻撃が当たった");
-
             IEnemyDamagable _enemyCon = other.gameObject.GetComponent<IEnemyDamagable>();
 
             _enemyCon.Damage(_attackPower);

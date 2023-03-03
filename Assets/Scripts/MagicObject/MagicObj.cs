@@ -14,35 +14,22 @@ public class MagicObj : Actor
     public AudioClip audioExplosion;
 
 
-    [SerializeField]
-    Transform target;
-    [SerializeField, Min(0)]
-    float time = 1;
-    [SerializeField]
-    float lifeTime = 2;
-    [SerializeField]
-    bool limitAcceleration = false;
-    [SerializeField, Min(0)]
-    float maxAcceleration = 100;
-    [SerializeField]
-    Vector3 minInitVelocity;
-    [SerializeField]
-    Vector3 maxInitVelocity;
-    Vector3 position;
-    Vector3 velocity;
-    Vector3 acceleration;
-    Transform thisTransform;
+    [SerializeField, Min(0)] float time = 1;
+    [SerializeField, Min(0)] float maxAcceleration = 100;
+    [SerializeField] private Transform target;
+    [SerializeField] private float lifeTime = 2;
+    [SerializeField] private bool limitAcceleration = false;
+    [SerializeField] private Vector3 minInitVelocity;
+    [SerializeField] private Vector3 maxInitVelocity;
+    private Vector3 position;
+    private Vector3 velocity;
+    private Vector3 acceleration;
+    private Transform thisTransform;
 
     public Transform Target
     {
-        set
-        {
-            target = value;
-        }
-        get
-        {
-            return target;
-        }
+        set{ target = value; }
+        get{ return target; }
     }
 
     private void Start()
@@ -63,14 +50,24 @@ public class MagicObj : Actor
             GetComponent<Rigidbody>().AddForce(transform.forward, ForceMode.Impulse);
             return;
         }
+
+        //加速度を求める
         acceleration = 2f / (time * time) * (target.position - position - time * velocity);
         if (acceleration.sqrMagnitude > maxAcceleration * maxAcceleration)
         {
             acceleration = acceleration.normalized * maxAcceleration;
         }
+
+        //速度を取得
         velocity += acceleration * Time.deltaTime;
+
+        //座標を取得 
         position += velocity * Time.deltaTime;
+
+        //結果的に求めた座標を代入する
         transform.position = position;
+
+        //向きは進んでいる方向を向く
         transform.rotation = Quaternion.LookRotation(velocity);
     }
 

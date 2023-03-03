@@ -15,6 +15,7 @@ public class MakerManager : MonoBehaviour
 
         for(int i = 0; i < MarkerObjcts.Length; i++)
         {
+            //ミニマップからマーカーとなるオブジェクトを非表示にする
             MarkerObjcts[i].SetActive(false);
         }
 

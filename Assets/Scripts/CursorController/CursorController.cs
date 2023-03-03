@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class CursorController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (PlayerState.playerState.modeSelection != PlayerState.ModeSelection.Title)
