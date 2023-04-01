@@ -176,7 +176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d80ac5f15727daa439e41db979f5fe5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sePlay: {fileID: 0}
 --- !u!114 &10699590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,18 +516,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 90210443}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &90210445 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4673242116674603175, guid: 9ab257fbf70066540ae2920f8591bb87,
-    type: 3}
-  m_PrefabInstance: {fileID: 90210443}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &92209134
 GameObject:
   m_ObjectHideFlags: 0
@@ -2942,18 +2929,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 957489663}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &957489665 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7774657613235305349, guid: 2f745bed8f707df40ba0e99235e98762,
-    type: 3}
-  m_PrefabInstance: {fileID: 957489663}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &971309434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4075937848129010, guid: 29636f40562819649b730c52f1babbcb,
@@ -3156,13 +3131,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff8c5ed7c6b4bf47a03f5343397ed91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
-  fireBall: 0
-  _defencePower: 100
   NumCrushingEnemies: 0
-  _NumApples: 0
   PlayerHP: 10000
   NumFriends: 0
+  state: 0
+  fireBall: 0
   modeSelection: 0
   _gameState: 0
   _burstState: 0
@@ -4498,12 +4471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f92b22c6ca958e04db4dc065f1397105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _MissionText: {fileID: 619536325}
-  _MissionPanel: {fileID: 584399739}
-  _startPos: {fileID: 2069329327}
-  _endPos: {fileID: 1257936501}
-  _remunerationObjcts: []
-  _remunerationPos: []
 --- !u!114 &1755424078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4516,10 +4483,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f729a9098506f4d86277d20edb3263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveLock: 0
-  _friendPanel: {fileID: 957489665}
-  _multiburstPanel: {fileID: 90210445}
-  _multiburst: 0
 --- !u!4 &1759876188 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4075937848129010, guid: 29636f40562819649b730c52f1babbcb,
@@ -5415,6 +5378,11 @@ PrefabInstance:
       propertyPath: _multiFirePos.Array.data[2]
       value: 
       objectReference: {fileID: 5888427403854162137}
+    - target: {fileID: 5888427404804016577, guid: 8143646ad5d55ce44b67361ec1aeab6d,
+        type: 3}
+      propertyPath: rolloffMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5888427404804016579, guid: 8143646ad5d55ce44b67361ec1aeab6d,
         type: 3}
       propertyPath: m_Layer

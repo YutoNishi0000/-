@@ -18,5 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/BrightDay.unity
     guid: 106025b4713992744bb2e8999d6a3608
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 689a087137849a646bfd3b74f07a16e3,
+      type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: 40b0bdd2c72f4144ba9f508ff7d654ba, type: 2}

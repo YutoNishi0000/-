@@ -6,14 +6,9 @@ using UnityEngine;
 public class MagicObj : Actor
 {
     public GameObject _explosion;
-
     public PlayerState.FireBall fireType;
-
     public int _attack;
-
     public AudioClip audioExplosion;
-
-
     [SerializeField, Min(0)] float time = 1;
     [SerializeField, Min(0)] float maxAcceleration = 100;
     [SerializeField] private Transform target;

@@ -81,4 +81,12 @@ public class PlayerState : MonoBehaviour
         PlayerHP = PlayerMAXHP;
         NumFriends = 5;
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
 }
